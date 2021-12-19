@@ -10,12 +10,12 @@ model = dict(
     type='StaticUnconditionalGAN',
     generator=dict(
         type='StyleGANv2Generator',
-        out_size=None,  # Need to be set.
+        out_size=28,  # Need to be set.
         style_channels=512,
     ),
     discriminator=dict(
         type='StyleGAN2Discriminator',
-        in_size=None,  # Need to be set.
+        in_size=28,  # Need to be set.
     ),
     gan_loss=dict(type='GANLoss', gan_type='wgan-logistic-ns'),
     disc_auxiliary_loss=dict(

@@ -528,6 +528,7 @@ class StyleGAN2Discriminator(nn.Module):
             8: 512,
             16: 512,
             32: 512,
+            28: 512,
             64: 256 * channel_multiplier,
             128: 128 * channel_multiplier,
             256: 64 * channel_multiplier,
@@ -536,7 +537,6 @@ class StyleGAN2Discriminator(nn.Module):
         }
 
         log_size = int(np.log2(in_size))
-
         in_channels = channels[in_size]
 
         _use_fp16 = num_fp16_scales > 0

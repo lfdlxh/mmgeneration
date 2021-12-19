@@ -1,5 +1,5 @@
 # dataset settings
-dataset_type = 'EncryptTrafficPic'
+dataset_type = 'mmcls.EncryptTrafficPic'
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
 train_pipeline = [
@@ -17,27 +17,22 @@ test_pipeline = [
     dict(type='Collect', keys=['img'])
 ]
 data = dict(
-    samples_per_gpu=48,
+    samples_per_gpu=24,
     workers_per_gpu=2,
     train=dict(
         type=dataset_type,
         data_prefix='/root/autodl-tmp/encrypted_traffic_data/da_data/train',
         pipeline=train_pipeline,
-        recursion_subdir=True),
+         ),
     val=dict(
         type=dataset_type,
         data_prefix='/root/autodl-tmp/encrypted_traffic_data/da_data/test',
         ann_file='data/imagenet21k/meta/val.txt',
         pipeline=test_pipeline,
-        recursion_subdir=True),
+         ),
     test=dict(
         type=dataset_type,
         data_prefix='/root/autodl-tmp/encrypted_traffic_data/da_data/test',
         ann_file='data/imagenet21k/meta/val.txt',
         pipeline=test_pipeline,
-        recursion_subdir=True))
-
-evaluation = dict(
-    interval=1,
-    metric=['accuracy', 'precision', 'recall','f1_score'],
-    )
+         ))

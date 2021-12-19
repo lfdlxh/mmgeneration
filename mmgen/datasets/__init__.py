@@ -10,6 +10,7 @@ from .samplers import DistributedSampler
 from .singan_dataset import SinGANDataset
 from .unconditional_image_dataset import UnconditionalImageDataset
 from .unpaired_image_dataset import UnpairedImageDataset
+# from .EncryptTrafficPic import EncryptTrafficPic
 
 __all__ = [
     'build_dataloader', 'build_dataset', 'LoadImageFromFile',

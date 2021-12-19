@@ -9,7 +9,9 @@ model = dict(
         out_channels=1),
     gan_loss=dict(type='GANLoss', gan_type='vanilla'))
 
-train_cfg = dict(disc_steps=1)
+# train_cfg = dict(disc_steps=1,use_ema=True)
+train_cfg = dict(disc_steps=1,use_ema=True)
+
 test_cfg = None
 
 # define optimizer

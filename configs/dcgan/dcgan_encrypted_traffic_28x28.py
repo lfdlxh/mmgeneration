@@ -6,9 +6,9 @@ _base_ = [
 
 # define dataset
 # you must set `samples_per_gpu` and `imgs_root`
-data = dict(
-    samples_per_gpu=128,
-    train=dict(imgs_root='/root/autodl-tmp/encrypted_traffic_data/da_data/train'))
+# data = dict(
+#     samples_per_gpu=1024,
+#     train=dict())
 
 # adjust running config
 lr_config = None
@@ -20,8 +20,7 @@ custom_hooks = [
         interval=10000)
 ]
 
-total_iters = 300002
-
+total_iters = 300000
 # use ddp wrapper for faster training
 use_ddp_wrapper = True
 find_unused_parameters = False
@@ -34,3 +33,15 @@ runner = dict(
 metrics = dict(
     ms_ssim10k=dict(type='MS_SSIM', num_images=10000),
     swd16k=dict(type='SWD', num_images=16384, image_shape=(3, 64, 64)))
+
+train_cfg = dict(real_img_key='img')
+
+# evaluation = dict(
+#     type='GenerativeEvalHook',
+#     interval=10000,
+#     metrics=dict(
+#         type='FID',
+#         num_images=10000,
+#         inception_pkl='path_to_inception_pkl',
+#         bgr2rgb=True),
+#     sample_kwargs=dict(sample_model='ema'))
